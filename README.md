@@ -110,8 +110,8 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 
   	if (pid > 0) {
     		exit(EXIT_SUCCESS);
-	``` <br>
-Code 
+	``` 
+Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_
 
     
 
