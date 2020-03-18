@@ -8,4 +8,4 @@ Nama Anggota Kelompok T17 :
 Buatlah program C yang menyerupai crontab untuk menjalankan script bash dengan
 ketentuan sebagai berikut: <br>
 * #### Ketentuan A hingga E 
-        A. Program menerima 4 argumen berupa :
+  A. Program menerima 4 argumen berupa :
