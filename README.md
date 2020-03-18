@@ -94,6 +94,6 @@ while(1){
     }
 }
 ```
-* ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Fungsi ```main``` menunjukkan tempat dimana program mulai dieksekusi sehingga semua fungsi dalam suatu program akan selalu dipanggil dari fungsi ini.<br>
-Fungsi ```argc``` atau _argument for count_ menunjukkan jumlah argumen yang diteruskan ke suatu program dari baris perintah. <br>
-Fungsi ```argv``` atau _argument for vector_ menunjukkan array dari argumen. 
+* ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
+Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. <br>
+
