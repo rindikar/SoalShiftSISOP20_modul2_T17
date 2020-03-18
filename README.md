@@ -16,3 +16,10 @@ ketentuan sebagai berikut: <br>
       iv. Path file .sh <br>
 * #### Ketentuan 1B
   B. Program akan mengeluarkan pesan error jika argumen yang diberikan tidak sesuai 
+* #### Ketentuan 1C
+  C. Program hanya menerima 1 config cron
+* #### Ketentuan 1D
+  D. Program berjalan di background (daemon)
+* #### Ketentuan 1E
+  E. Tidak boleh menggunakan fungsi system() <br>
+Contoh ```./program \* 34 7 /home/somi/test.sh ``` 
