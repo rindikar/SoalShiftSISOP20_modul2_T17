@@ -98,16 +98,16 @@ while(1){
 Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. <br>
 * Dikarenakan program ini akan berjalan di _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada fungsi berikut :
-```pid_t pid, sid;
-	int d,m,j;
+```		pid_t pid, sid;
+		int d,m,j;
 
-	pid = fork();
+		pid = fork();
 
-  if (pid < 0) {
-    exit(EXIT_FAILURE);
-  }
+  	if (pid < 0) {
+    		exit(EXIT_FAILURE);
+  	}
 
-  if (pid > 0) {
-    exit(EXIT_SUCCESS);```
+  	if (pid > 0) {
+    		exit(EXIT_SUCCESS);```
     
 
