@@ -97,7 +97,7 @@ while(1){
 * ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
 Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. <br>
 * Dikarenakan program ini akan berjalan di _background_, maka kita harus membuat __Daemon__. <br>
-Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada fungsi berikut :
+Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash	
 		pid_t pid, sid;
 		int d,m,j;
@@ -109,6 +109,9 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada fun
   	}
 
   	if (pid > 0) {
-    		exit(EXIT_SUCCESS);```
+    		exit(EXIT_SUCCESS);
+	``` <br>
+Code 
+
     
 
