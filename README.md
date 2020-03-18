@@ -22,4 +22,7 @@ ketentuan sebagai berikut: <br>
   D. Program berjalan di background (daemon)
 * #### Ketentuan 1E
   E. Tidak boleh menggunakan fungsi system() <br>
-Contoh ```./program \* 34 7 /home/somi/test.sh ``` 
+  
+Contoh ```./program \* 34 7 /home/somi/test.sh ``` <br>
+Program dengan argumen seperti contoh di atas akan menjalankan script test.sh setiap
+detik pada jam 07:34.
