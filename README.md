@@ -26,3 +26,5 @@ ketentuan sebagai berikut: <br>
 Contoh ```./program \* 34 7 /home/somi/test.sh ``` <br>
 Program dengan argumen seperti contoh di atas akan menjalankan script test.sh setiap
 detik pada jam 07:34.
+ #### Code : https://github.com/rindikar/SoalShiftSISOP20_modul2_T17/blob/master/soal1.c
+ #### Pembahasan :
