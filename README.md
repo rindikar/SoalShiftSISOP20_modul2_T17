@@ -185,5 +185,10 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 ### Soal 3
 Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 * #### Soal 3A
-  Program buatan jaya harus bisa membuat dua direktori di __“/home/[USER]/modul2/”__. Direktori yang pertama diberi nama __“indomie”__, lalu __lima detik__ kemudian membuat direktori yang kedua bernama __“sedaap”__.
-		
+  Program buatan jaya harus bisa membuat dua direktori di __“/home/[USER]/modul2/”__. Direktori yang pertama diberi nama __“indomie”__, lalu lima detik kemudian membuat direktori yang kedua bernama __“sedaap”__.
+* #### Soal 3B
+  Kemudian program tersebut harus meng-ekstrak file __jpg.zip__ di direktori __“/home/[USER]/modul2/”__. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
+* #### Soal 3C
+  Diberilah tugas baru yaitu setelah di ekstrak, hasil dari ekstrakan tersebut (di dalam direktori __“home/[USER]/modul2/jpg/”__) harus dipindahkan sesuai dengan pengelompokan, semua file harus dipindahkan ke __“/home/[USER]/modul2/sedaap/”__ dan semua direktori harus dipindahkan ke __“/home/[USER]/modul2/indomie/”__.
+* #### Soal 3D
+ Untuk setiap direktori yang dipindahkan ke __“/home/[USER]/modul2/indomie/”__ harus membuat dua file kosong. File yang pertama diberi nama __“coba1.txt”__, lalu 3 detik kemudian membuat file bernama __“coba2.txt”__. (contoh :__“/home/[USER]/modul2/indomie/{nama_folder}/coba1.txt”__).
