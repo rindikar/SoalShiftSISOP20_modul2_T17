@@ -171,4 +171,6 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	struct w tm = *localtime(&t)
 	```
 	maka ```time_t t = time(NULL);```akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. <br>
+	Sedangkan ```struct w tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_. <br>
+	
 	
