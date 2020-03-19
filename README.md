@@ -172,5 +172,12 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	```
 	maka ```time_t t = time(NULL);```akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. <br>
 	Sedangkan ```struct w tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_. <br>
-	
-	
+* Code berikutnya yakni :
+	```bash
+	if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0)) {
+      	if (fork()==0)
+	execl("/bin/bash", "bash", argv[5], NULL);}
+	```
+	akan melakukan pengecekan ```if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0))``` apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0```. Jika kondisi tersebut terpenuhi, maka program akan melakukan _Fork_ ```if (fork()==0)```. <br>
+	_Fork_ tersebut akan menjalankan _bash_ pada script yang dinputkan oleh _user_ yang berada pada direktori ```/bin/bash```
+		
