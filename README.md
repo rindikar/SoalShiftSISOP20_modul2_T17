@@ -153,4 +153,9 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	```bash
 	if(d = atoi(argv[1]) != '*' && (atoi(argv[1] > 60 && atoi(argv[1]) < 0);
 	```
-	Terdapat fungsi```argv[1]``` yang akan menyimpan argument __Detik__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan pertama yakni apakah argumen yang tersimpan dalam variabel __Detik__ merupakan karakter ```*``` dengan ```argv[1]) != '*'``` dan apakah argumen yang tersimpan dalam variabel __Detik__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[1] > 60 && atoi(argv[1]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. 
+	Terdapat fungsi```argv[1]``` yang akan menyimpan argument __Detik__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan pertama yakni  ```argv[1]) != '*'``` apakah argumen yang tersimpan dalam variabel __Detik__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Detik__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[1] > 60 && atoi(argv[1]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
+* Kemudian , pada code di bawah ini :
+	```bash
+	if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
+	```
+	Terdapat fungsi```argv[2]``` yang akan menyimpan argument __Menit__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Menit__ ```m```. Pengecekan pertama yakni  ```argv[2]) != '*'``` apakah argumen yang tersimpan dalam variabel __Menit__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Menit__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[2] > 60 && atoi(argv[2]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
