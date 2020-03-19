@@ -95,7 +95,7 @@ while(1){
 }
 ```
 * ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
-Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. <br>
+Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. Kedua fungsi tersebut dimaasukkan ke dalam fungsi ```main``` untuk mengetahui beraoa banyak dan aoa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
 * Dikarenakan program ini akan bekerja secara _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash
@@ -136,8 +136,11 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   	close(STDOUT_FILENO);
   	close(STDERR_FILENO);
   	```
-
-	
-	
-    
+* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima). Apabila jumlah argumen tersebut kurang dari 5 (lima), maka program tidak akan berjalan sehingga kami membuat code di bawah ini :
+	```bash 
+	if(argc != 5){
+		printf("error");
+		return 0;
+	}
+	```
 
