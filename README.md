@@ -182,4 +182,8 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	akan melakukan pengecekan ```if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0))``` apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0```. Jika kondisi tersebut terpenuhi, maka program akan melakukan _Fork_ ```if (fork()==0)```. <br>
 	_Fork_ tersebut akan menjalankan _bash_ pada script yang dinputkan oleh _user_ yang berada pada direktori ```/bin/bash```
 	Proses looping yang dibuat oleh fungsi ```while(1)``` ini akan memberhentikan program sejenak ```sleep(1);``` selama 1 detik sebelum melakukan proses looping kembali.
+### Soal 3
+Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
+* #### Soal 3A
+  Program buatan jaya harus bisa membuat dua direktori di __“/home/[USER]/modul2/”__. Direktori yang pertama diberi nama __“indomie”__, lalu __lima detik__ kemudian membuat direktori yang kedua bernama __“sedaap”__.
 		
