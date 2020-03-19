@@ -136,11 +136,16 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   	close(STDOUT_FILENO);
   	close(STDERR_FILENO);
   	```
-* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima). Apabila jumlah argumen tersebut kurang dari 5 (lima) ```if(argc != 5)```, maka program tidak akan berjalan ```printf("error");``` sehingga terciptalah code di bawah ini :
+* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima), hal ini dikarenakan ```./program/``` terhitung menjadi argumen. Apabila jumlah argumen tersebut kurang dari 5 (lima) ```if(argc != 5)```, maka program tidak akan berjalan ```printf("error");``` sehingga terciptalah code di bawah ini :
 	```bash 
 	if(argc != 5){
 		printf("error");
 		return 0;
 	}
 	```
-
+* Pada program akan diminta _value_ dari __Detik__, __Menit__ dan __Jam__. Oleh karena itu, perlu adanya inisialisasi _value_ awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
+	```bash
+	d = 0;
+	m = 0;
+	j = 0;
+	```
