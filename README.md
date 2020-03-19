@@ -136,7 +136,7 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   	close(STDOUT_FILENO);
   	close(STDERR_FILENO);
   	```
-* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima). Apabila jumlah argumen tersebut kurang dari 5 (lima), maka program tidak akan berjalan sehingga kami membuat code di bawah ini :
+* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima). Apabila jumlah argumen tersebut kurang dari 5 (lima) ```if(argc != 5)```, maka program tidak akan berjalan ```printf("error");``` sehingga terciptalah code di bawah ini :
 	```bash 
 	if(argc != 5){
 		printf("error");
