@@ -225,3 +225,9 @@ child_id1 = fork();
 }
 ```
 * Di awal tertulis code ```pid_t child_id1, child_id2;``` ini merupakan pendeklarasian variabel __child_id1__ dan __child_id2__. Kedua variabel ini akan menyimpan ID dari __Child Process__.
+* Dilanjutkan dengan 
+```bash
+int proses;
+child_id1 = fork();
+```
+yang merupakan fungsi untuk membuat __Child Process__. PID yang di 
