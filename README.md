@@ -250,3 +250,5 @@ __Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesa
 	```child_id2 = fork();``` akan melakukan penyimpanan PID yang dihasilkan dari proses _fork_ ke dalam variabel ```child_id2```.<br>
 	Berbeda dengan proses yang dilakukan oleh __Child Process yang Pertama__, pada __Child Process yang Kedua__ dilakukan proses meng-ekstrak file __jpg.zip__. <br> 
 	Dalam pembuatan __Child Process yang Kedua__ juga menggunakan fungsi ```exec``` dengan code berikut ```execv("/usr/bin/unzip", argv);```
+* Kemudian, hasil dari ekstrakan tersebut nantinya akan dipindahkan ke direktori baru bernama ```"indomie```", maka kita perlu membuat direktori baru tersebut ```char *argv[3] = {"mkdir", "indomie", NULL};```
+
