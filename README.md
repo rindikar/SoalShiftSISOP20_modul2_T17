@@ -237,7 +237,7 @@ child_id1 = fork();
 	  }
 	```
 yang merupakan fungsi untuk membuat __Child Process yang Pertama__. ```child_id1 = fork();``` menunjukkan bahwa PID yang dihasilkan dari proses _fork_ akan disimpan dalam variabel ```child_id1```.<br>
-__Child Process__ ```if (child_id == 0)```akan membuat direktori baru dengan nama "sedaap" dengan menggunakan code berikut ```char *argv[3] = {"mkdir", "sedaap", NULL};```. Dalam __Child Process__ ini menggunakan fungsi ```exec``` yang ditunjukkan dari code ```execv("/bin/mkdir", argv);```. <br>
+Pada __Child Process yang Pertama__ akan membuat direktori baru dengan nama "sedaap" dengan menggunakan code berikut ```char *argv[3] = {"mkdir", "sedaap", NULL};```. Dalam __Child Process yang Pertama__ ini menggunakan fungsi ```exec``` yang ditunjukkan dari code ```execv("/bin/mkdir", argv);```. <br>
 __Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesai, kemudian program akan diberhentikan sejenak ```sleep(3);``` selama 3 detik sebelum __Parent Process__ membuat __Child Process__ kembali.
 * Setelah __Child Process yang Pertama__ telah selesai dilakukan, maka dilanjutkan dengan membuat __Child Process yang Kedua__.
 	```bash
@@ -247,4 +247,6 @@ __Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesa
 	char *argv[3] = {"unzip", "jpg.zip", NULL};
 	execv("/usr/bin/unzip", argv);
 	``` 
-```child_id2 = fork();``` akan melakukan penyimpanan PID yang dihasilkan dari proses _fork_ ke dalam variabel ```child_id2```.<br>
+	```child_id2 = fork();``` akan melakukan penyimpanan PID yang dihasilkan dari proses _fork_ ke dalam variabel ```child_id2```.<br>
+	Berbeda dengan proses yang dilakukan oleh __Child Process yang Pertama__, pada __Child Process yang Kedua__ dilakukan proses meng-ekstrak file __jpg.zip__. <br> 
+	Dalam pembuatan __Child Process yang Kedua__ juga menggunakan fungsi ```exec``` dengan code berikut ```execv("/usr/bin/unzip", argv);```
