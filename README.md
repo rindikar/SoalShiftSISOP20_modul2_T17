@@ -96,7 +96,7 @@ while(1){
 ```
 * ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
 Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. <br>
-* Dikarenakan program ini akan berjalan di _background_, maka kita harus membuat __Daemon__. <br>
+* Dikarenakan program ini akan bekerja secara _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash
 		pid_t pid, sid;
@@ -110,7 +110,13 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 
   	if (pid > 0) {
     		exit(EXIT_SUCCESS);
+	}
+
+  umask(0);
 	``` 
-	Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_ (men-_swpan_ proses menjadi _Parent Process_ dan _Child Process_) kemudian membunuh _Parent Process_ yang ada. Dengan matinya _Parent Process_, maka sistem operasi akan mengira bahwa _Parent Process_ telah selesai sehingga kita akan mendapatkan sebuah _Child Process_ yang menandakan bahwa kita mendapatkan proses yang hampir bekerja secara _background_.
+	Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_ (men-_swpan_ proses menjadi __Parent Process__ dan __Child Process__) kemudian membunuh __Parent Process__ yang ada. Dengan matinya __Parent Process__, maka sistem operasi akan mengira bahwa __Parent Process__ telah selesai sehingga kita akan mendapatkan sebuah __Child Process__yang menandakan bahwa kita mendapatkan proses yang hampir bekerja secara _background_. <br>
+	Perlu diketahui bahwa __Daemon__ harus bekerja secara independen daripada proses yang lain (termasuk proses yang menjalankannya). Maka, kita harus melakukan langkah kedua dari pembuatan __Daemon__ dengan code berikut : 
+	```bash 
+	
     
 
