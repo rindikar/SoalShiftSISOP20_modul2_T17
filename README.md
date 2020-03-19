@@ -229,15 +229,22 @@ child_id1 = fork();
 	```bash
 	int proses;
 	child_id1 = fork();
-	```
-yang merupakan fungsi untuk membuat __Child Process__. PID yang dihasilkan dari proses _fork_ akan disimpan dalam variabel ```child_id1```.
-* Pada code di bawah ini :
-	```bash
+
 	if (child_id == 0)	{
 	sleep(3);
 	char *argv[3] = {"mkdir", "sedaap", NULL};
 	execv("/bin/mkdir", argv);
 	  }
 	```
+yang merupakan fungsi untuk membuat __Child Process yang Pertama__. ```child_id1 = fork();``` menunjukkan bahwa PID yang dihasilkan dari proses _fork_ akan disimpan dalam variabel ```child_id1```.<br>
 __Child Process__ ```if (child_id == 0)```akan membuat direktori baru dengan nama "sedaap" dengan menggunakan code berikut ```char *argv[3] = {"mkdir", "sedaap", NULL};```. Dalam __Child Process__ ini menggunakan fungsi ```exec``` yang ditunjukkan dari code ```execv("/bin/mkdir", argv);```. <br>
 __Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesai, kemudian program akan diberhentikan sejenak ```sleep(3);``` selama 3 detik sebelum __Parent Process__ membuat __Child Process__ kembali.
+* Setelah __Child Process yang Pertama__ telah selesai dilakukan, maka dilanjutkan dengan membuat __Child Process yang Kedua__.
+	```bash
+	else {
+	child_id2 = fork();
+	if (child_id2 == 0)	{
+	char *argv[3] = {"unzip", "jpg.zip", NULL};
+	execv("/usr/bin/unzip", argv);
+	``` 
+```child_id2 = fork();``` akan melakukan penyimpanan PID yang dihasilkan dari proses _fork_ ke dalam variabel ```child_id2```.<br>
