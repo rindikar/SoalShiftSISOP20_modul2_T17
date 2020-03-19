@@ -143,7 +143,7 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 		return 0;
 	}
 	```
-* Pada program akan diminta _value_ dari __Detik__ ```d```, __Menit__ ```m``` dan __Jam__ ```j```. Oleh karena itu, perlu adanya inisialisasi _value_ awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
+* Pada program akan diminta argumen dari __Detik__ ```d```, __Menit__ ```m``` dan __Jam__ ```j```. Oleh karena itu, perlu adanya inisialisasi argumen awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
 	```bash
 	d = 0;
 	m = 0;
@@ -152,6 +152,5 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 * Lalu, pada code di bawah ini :
 	```bash
 	if(d = atoi(argv[1]) != '*' && (atoi(argv[1] > 60 && atoi(argv[1]) < 0);
-    if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
-    if(j = atoi(argv[3]) != '*' && (atoi(argv[1] > 60 && atoi(argv[3]) < 0);
 	```
+```argv[1]``` akan menyimpan argument __Detik__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan pertama yakni apakah argumen yang tersimpan dalam variabel __Detik__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Detik__ merupakan bilangan diantara 0 hingga 60. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. 
