@@ -111,6 +111,6 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   	if (pid > 0) {
     		exit(EXIT_SUCCESS);
 	``` 
-	Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_ (men-_swpan_ proses menjadi induk dan anak) kemudian membunuh proses induk yang ada. 
+	Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_ (men-_swpan_ proses menjadi _Parent Process_ dan _Child Process_) kemudian membunuh _Parent Process_ yang ada. Dengan matinya _Parent Process_, maka sistem operasi akan mengira bahwa _Parent Process_ telah selesai sehingga kita akan mendapatkan sebuah _Child Process_ yang menandakan bahwa kita mendapatkan proses yang hampir bekerja secara _background_.
     
 
