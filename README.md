@@ -129,7 +129,8 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
    exit(EXIT_FAILURE);
   }
   	```
-	Direktori kerja yang aktif harus ditempatkan ke tempat yang pasti akan selalu ada dengan menggunakan implementasi fungsi ```chdir```.
+	Direktori kerja yang aktif harus ditempatkan ke tempat yang pasti akan selalu ada dengan menggunakan implementasi fungsi ```chdir```. <br>
+	Untuk mencegah terjadinya intervensi dari _user_ dan untuk tujuan pengamanan, maka kita perlu melakukan langkah keempat dari pembuatan __Daemon__ yaitu melakukan penutupan terhadap descriptor standard I/O yaitu
 
 
 	
