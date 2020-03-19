@@ -164,4 +164,8 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	if(j = atoi(argv[3]) != '*' && (atoi(argv[1] > 60 && atoi(argv[3]) < 0);
 	```
 	Terdapat fungsi```argv[3]``` yang akan menyimpan argument __Jam__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Jam__ ```j```. Pengecekan yang dilakukan yakni  ```argv[3]) != '*'``` apakah argumen yang tersimpan dalam variabel __Menit__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Menit__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[3] > 60 && atoi(argv[3]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
-* Pada ```while(1)``` akan membuat sebuah looping (loop utama) dikarenakan __Daemon__ akan bekerja dalam jangka waktu tertentu. 
+* Pada ```while(1)``` akan membuat sebuah looping (loop utama) dikarenakan __Daemon__ akan bekerja dalam jangka waktu tertentu. <br>
+* ```bash
+	 time_t t = time(NULL);
+ struct w tm = *localtime(&t)
+ ```
