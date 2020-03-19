@@ -130,8 +130,12 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   }
   	```
 	Direktori kerja yang aktif harus ditempatkan ke tempat yang pasti akan selalu ada dengan menggunakan implementasi fungsi ```chdir```. <br>
-	Untuk mencegah terjadinya intervensi dari _user_ dan untuk tujuan pengamanan, maka kita perlu melakukan langkah keempat dari pembuatan __Daemon__ yaitu melakukan penutupan terhadap descriptor standard I/O yaitu
-
+	Untuk mencegah terjadinya intervensi dari _user_ dan untuk tujuan pengamanan, maka kita perlu melakukan langkah keempat dari pembuatan __Daemon__ yaitu melakukan penutupan terhadap tiga jenis descriptor standard I/O yaitu ```STDIN``` (standar input), ```STDOUT``` (standar output) dan ```STDERR``` (standar error). Penutupan file descriptor standard I/O ini menggunakan implementasi dari fungsi ```close``` dengan penulisan code di bawah ini :
+	```bash
+	close(STDIN_FILENO);
+  close(STDOUT_FILENO);
+  close(STDERR_FILENO);
+  	```
 
 	
 	
