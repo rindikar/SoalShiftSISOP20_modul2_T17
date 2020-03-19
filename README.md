@@ -143,9 +143,15 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 		return 0;
 	}
 	```
-* Pada program akan diminta _value_ dari __Detik__, __Menit__ dan __Jam__. Oleh karena itu, perlu adanya inisialisasi _value_ awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
+* Pada program akan diminta _value_ dari __Detik__ ```d```, __Menit__ ```m``` dan __Jam__ ```j```. Oleh karena itu, perlu adanya inisialisasi _value_ awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
 	```bash
 	d = 0;
 	m = 0;
 	j = 0;
+	```
+* Lalu, pada code di bawah ini :
+	```bash
+	if(d = atoi(argv[1]) != '*' && (atoi(argv[1] > 60 && atoi(argv[1]) < 0);
+	if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
+    	if(j = atoi(argv[3]) != '*' && (atoi(argv[1] > 60 && atoi(argv[3]) < 0);
 	```
