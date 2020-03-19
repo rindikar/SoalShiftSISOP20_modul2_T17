@@ -95,7 +95,7 @@ while(1){
 }
 ```
 * ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
-Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. Kedua fungsi tersebut dimaasukkan ke dalam fungsi ```main``` untuk mengetahui beraoa banyak dan aoa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
+Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. Kedua fungsi tersebut dimasukkan ke dalam fungsi ```main``` untuk mengetahui beraoa banyak dan aoa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
 * Dikarenakan program ini akan bekerja secara _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash
@@ -226,8 +226,18 @@ child_id1 = fork();
 ```
 * Di awal tertulis code ```pid_t child_id1, child_id2;``` ini merupakan pendeklarasian variabel __child_id1__ dan __child_id2__. Kedua variabel ini akan menyimpan ID dari __Child Process__.
 * Dilanjutkan dengan 
-```bash
-int proses;
-child_id1 = fork();
-```
-yang merupakan fungsi untuk membuat __Child Process__. PID yang di 
+	```bash
+	int proses;
+	child_id1 = fork();
+	```
+yang merupakan fungsi untuk membuat __Child Process__. PID yang dihasilkan dari proses _fork_ akan disimpan dalam variabel ```child_id1```.
+* Pada code di bawah ini :
+	```bash
+	if (child_id == 0)	{
+	sleep(3);
+	char *argv[3] = {"mkdir", "sedaap", NULL};
+	execv("/bin/mkdir", argv);
+	  }
+	```
+__Child Process__ ```if (child_id == 0)```akan membuat direktori baru dengan nama "sedaap" dengan menggunakan code berikut ```char *argv[3] = {"mkdir", "sedaap", NULL};```. Dalam __Child Process__ ini menggunakan fungsi ```exec``` yang ditunjukkan dari code ```execv("/bin/mkdir", argv);```. <br>
+__Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesai, kemudian program akan diberhentikan sejenak ```sleep(3);``` selama 3 detik sebelum __Parent Process__ membuat __Child Process__ kembali.
