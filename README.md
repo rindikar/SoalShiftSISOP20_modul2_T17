@@ -134,19 +134,19 @@ yang menunjukkan jumlah argumen yang digunakan. Selain itu, juga terdapat fungsi
 * Dikarenakan program ini akan bekerja secara _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash
-		pid_t pid, sid;       
-  		int d,m,j;
+	pid_t pid, sid;       
+  int d,m,j;
 
-  		pid = fork();  
+  pid = fork();  
 
-  		if (pid < 0) {
-   		exit(EXIT_FAILURE);
-  		}
-  		if (pid > 0) {
-    		exit(EXIT_SUCCESS);
-  		}
+  if (pid < 0) {
+    exit(EXIT_FAILURE);
+  }
+  if (pid > 0) {
+    exit(EXIT_SUCCESS);
+  }
 
- umask(0);
+  umask(0);
 	``` 
 	Jadi, untuk membuat __Daemon__, kita perlu melakukan _forking_ (men-_swpan_ proses menjadi __Parent Process__ dan __Child Process__) kemudian membunuh __Parent Process__ yang ada. Dengan matinya __Parent Process__, maka sistem operasi akan mengira bahwa __Parent Process__ telah selesai sehingga kita akan mendapatkan sebuah __Child Process__ yang menandakan bahwa kita mendapatkan proses yang hampir bekerja secara _background_. Fungsi ```umask(0)``` akan mengubah mode file untuk memastikan bahwa file tersebut dapat ditulis dan dibaca dengan benar. <br>
 	Perlu diketahui bahwa __Daemon__ harus bekerja secara independen daripada proses yang lain (termasuk proses yang menjalankannya). Maka, kita harus melakukan langkah kedua dari pembuatan __Daemon__ dengan code berikut : 
