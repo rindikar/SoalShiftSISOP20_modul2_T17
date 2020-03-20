@@ -140,10 +140,10 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
   		pid = fork();  
 
   		if (pid < 0) {
-   			 exit(EXIT_FAILURE);
+   		exit(EXIT_FAILURE);
   		}
   		if (pid > 0) {
-    			exit(EXIT_SUCCESS);
+    		exit(EXIT_SUCCESS);
   		}
 
  umask(0);
