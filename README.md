@@ -129,8 +129,8 @@ int main(int argc, char *argv[]) {
 }
 
 ```
-* ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
-Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. Kedua fungsi tersebut dimasukkan ke dalam fungsi ```main``` untuk mengetahui beraoa banyak dan aoa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
+* ```int main(int argc, char *argv[])``` menunjukkan bahwa di dalam fungsi ```main``` terdapat fungsi ```argc``` (_Argument Count)_
+yang menunjukkan jumlah argumen yang digunakan. Selain itu, juga terdapat fungsi ```argv``` _(Argument Vector)_ yang menyimpan setiap argumen yang diberikan oleh user dalam bentuk array. Kedua fungsi tersebut dimasukkan ke dalam fungsi ```main``` untuk mengetahui berapa banyak dan apa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
 * Dikarenakan program ini akan bekerja secara _background_, maka kita harus membuat __Daemon__. <br>
 Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada code berikut :
 	```bash
