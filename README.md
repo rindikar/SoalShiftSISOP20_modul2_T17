@@ -26,31 +26,33 @@ ketentuan sebagai berikut: <br>
 Contoh ```./program \* 34 7 /home/somi/test.sh ``` <br>
 Program dengan argumen seperti contoh di atas akan menjalankan script test.sh setiap
 detik pada jam 07:34.
- #### Code : https://github.com/rindikar/SoalShiftSISOP20_modul2_T17/blob/master/soal1.c
+ #### Code :https://github.com/rindikar/SoalShiftSISOP20_modul2_T17/blob/master/Revisi_Soal1.c
  #### Penyelesaian :
  ```bash
- #include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <wait.h>
-#include <time.h>
 #include <stdio.h>
-#include <syslog.h>
+#include <time.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <fcntl.h>
 #include <string.h>
+#include <errno.h>
+#include <syslog.h>
+#include <unistd.h>
+#include <sys/types.h>
 #include <sys/stat.h>
 
-int main(int argc, char** argv) {
-	pid_t pid, sid;
-	int d,m,j;
 
-	pid = fork();
+
+
+int main(int argc, char *argv[]) {
+  pid_t pid, sid;       
+  int d,m,j;
+
+  pid = fork();  
 
   if (pid < 0) {
     exit(EXIT_FAILURE);
   }
-
   if (pid > 0) {
     exit(EXIT_SUCCESS);
   }
@@ -61,38 +63,71 @@ int main(int argc, char** argv) {
   if (sid < 0) {
     exit(EXIT_FAILURE);
   }
-  if ((chdir("/home/xd/Desktop/Modul2/shift")) < 0) {
-   exit(EXIT_FAILURE);
+
+  if ((chdir("/")) < 0) {
+    exit(EXIT_FAILURE);
   }
 
 
-  close(STDIN_FILENO);
-  close(STDOUT_FILENO);
-  close(STDERR_FILENO);
+  if(argc != 5){
+    printf("Error");
+    return 0;
+  }
 
 
-	if(argc != 5){
-		printf("error");
-		return 0;
-	}
 
-	d = 0;
-	m = 0;
-	j = 0;
-	
-    if(d = atoi(argv[1]) != '*' && (atoi(argv[1] > 60 && atoi(argv[1]) < 0);
-    if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
-    if(j = atoi(argv[3]) != '*' && (atoi(argv[1] > 60 && atoi(argv[3]) < 0);
+  d = 0;
+  m = 0;
+  j = 0;
+  
+//Detik
+	if(isalpha(argv[1][0])){
+    		printf("Int boi kalo ga *");
+  	}else if(atoi(argv[1]) < 0 || atoi(argv[1]) > 59){
+    		printf("Detik cuma 0 - 59");
+	}else if(argv[1][0] == '*'){
+		d = 0;  	
+	}else{
+    		d = atoi(argv[1]);
+  	}
+  
+//Menit
+  	if(isalpha(argv[2][0])){
+    		printf("Int boi kalo ga *");
+  	}else if(atoi(argv[2]) < 0 || atoi(argv[2]) > 59){
+    		printf("Menit cuma 0 - 59");
+	}else if(argv[2][0] == '*'){
+		m = 0;
+  	}else{
+    		m = atoi(argv[2]);
+  	}
+  
+//Jam
+  	if(isalpha(argv[3][0])){
+    		printf("Int boi kalo ga *");
+  	}else if(atoi(argv[3]) < 0 || atoi(argv[3]) > 23){
+   		printf("Jam 0 - 23");
+	}else if(argv[3][0] == '*'){
+		j = 0;
+  	}else{
+    		j = atoi(argv[3]);
+  	}
 
-while(1){
- time_t t = time(NULL);
- struct w tm = *localtime(&t)
- if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0)) {
-      if (fork()==0)
-      execl("/bin/bash", "bash", argv[5], NULL);}
-      sleep(1);
+
+
+  while(1) {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    if((j == tm.tm_hour || j == 0) && (m == tm.tm_min || m == 0) && (d == tm.tm_sec || d == 0)){
+      if(fork()==0){
+        char *argx[] = {"bash",argv[4], NULL};
+        execv("/bin/bash", argx);
+      }
     }
+    sleep(1);
+  }
 }
+
 ```
 * ```int main(int argc, char** argv)``` terdiri atas fungsi ```main```, ```argc``` dan ```argv```.<br> Dalam fungsi ```main``` tersebut, terdapat fungsi ```argc``` atau _Argument Count_ menunjukkan jumlah argumen yang digunakan. <br>
 Selain itu, juga terdapat fungsi ```argv``` atau _Argument Vector_ yang menyimpan setiap argumen yang diberikan oleh _user_ dalam bentuk array. Kedua fungsi tersebut dimasukkan ke dalam fungsi ```main``` untuk mengetahui beraoa banyak dan aoa saja parameter yang akan dikirimkan oleh sistem operasi ke program. <br>
