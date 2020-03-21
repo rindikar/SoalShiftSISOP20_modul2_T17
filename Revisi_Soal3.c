@@ -76,7 +76,7 @@ if (pidB > 0 && pidC > 0){
             	while ((wait(&status)) > 0); 
             	char okeh[700];
             	sprintf(okeh,"/home/xd/Desktop/Modul2/shift/%s",directory->d_name);
-            	char* movesedap[] = {"mv", okeh,"/home/umum/Desktop/Modul2/shift/sedaap/", NULL};
+            	char* movesedap[] = {"mv", okeh,"/home/xd/Desktop/Modul2/shift/sedaap/", NULL};
             	execv("/bin/mv", movesedap);
           		}
         	}        
@@ -86,20 +86,20 @@ if (pidB > 0 && pidC > 0){
 	else if (pidB == 0 && pidC > 0){ 
     		while ((wait(&status)) > 0);
     		if (pidA == 0){
-      char *masakindomie[] = {"mkdir", "-p","/home/umum/Desktop/Modul2/shift/indomie", NULL};
+      char *masakindomie[] = {"mkdir", "-p","/home/xd/Desktop/Modul2/shift/indomie", NULL};
       execv("/bin/mkdir", masakindomie); 
     }
     else
 {
       while ((wait(&status)) > 0); 
       sleep(5); 
-      char *masaksedaap[] = {"mkdir", "-p","/home/umum/Desktop/Modul2/shift/sedaap", NULL}; 
+      char *masaksedaap[] = {"mkdir", "-p","/home/xd/Desktop/Modul2/shift/sedaap", NULL}; 
       execv("/bin/mkdir", masaksedaap); 
     }
   } 
 	else if (pidB > 0 && pidC == 0)
 	{ 
-    char* ekstrak[] = {"unzip", "-oq","/home/umum/Desktop/Modul2/shift/jpg.zip", NULL};
+    char* ekstrak[] = {"unzip", "-oq","/home/xd/Desktop/Modul2/shift/jpg.zip", NULL};
     execv("/usr/bin/unzip", ekstrak);
 	}
 	return 0; 
