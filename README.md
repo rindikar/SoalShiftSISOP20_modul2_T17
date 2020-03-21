@@ -224,11 +224,17 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
     	struct tm tm = *localtime(&t);
 	```
 	```time_t t = time(NULL)``` akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. Sedangkan ```struct tm tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_.
-* Lalu, pada code berikut ini akan melakukan pengecekan apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan  apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga  apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0``
+* Lalu, pada code berikut ini akan melakukan pengecekan apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan  apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga  apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0```
 	```bash
 	if((j == tm.tm_hour || j == 0) && (m == tm.tm_min || m == 0) && (d == tm.tm_sec || d == 0)){
 	```
 	Jika kondisi tersebut terpenuhi, maka program akan melakukan _Fork_ ```if(fork()==0)```. _Fork_ tersebut akan menjalankan _bash_ pada script yang dinputkan oleh _user_ yang berada pada direktori ```/bin/bash```. Proses looping yang dibuat oleh fungsi ```while(1)``` ini akan memberhentikan program sejenak ```sleep(1);``` selama 1 detik sebelum melakukan proses looping kembali.
+* Untuk menjalankan _crontab_ tersebut, kita perlu membuat sebuah _script bash_ yang kami beri nama __test.sh__ yang berisikan fungsi untuk mengambil waktu saat ini agar dapat ditampilkan dalam suatu file __s1.txt__
+	```bash
+	#!/bin/bash
+	date >> s1.txt
+	```
+#### Output :
 ### Soal 3
 Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 * #### Soal 3A
