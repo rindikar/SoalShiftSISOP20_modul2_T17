@@ -339,5 +339,9 @@ child_id1 = fork();
 		           exit(0);
 		        } 
 	```
+
+### Kendala :
+1. SISOP MANTAPPU membuat otak sangat bekerja karena soal setinggi gunung (kemungkinan lebih tinggi dari gunung).
+
 	
 	
