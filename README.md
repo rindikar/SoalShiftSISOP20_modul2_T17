@@ -216,20 +216,19 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
     }
     sleep(1);
   }
-}
 	```
-	maka ```time_t t = time(NULL);```akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. <br>
-	Sedangkan ```struct w tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_. <br>
-* Code berikutnya yakni :
+	Dari code di atas, maka pada ```while(1)``` akan membuat sebuah _loopimg_ (loop utama) dikarenakan __Daemon__ akan bekerja dalam jangka waktu tertentu. <br>
+	Daalam proses _looping_ akan terjadi penyimpanan waktu saat ini. Hal ini di-code-kan dengan
 	```bash
-	if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0)) {
-      	if (fork()==0)
-	execl("/bin/bash", "bash", argv[5], NULL);}
-	sleep(1);
+	time_t t = time(NULL);
+    	struct tm tm = *localtime(&t);
 	```
-	akan melakukan pengecekan ```if((j == w.tm_j || j == 0) && (m == w.tm_m || m == 0) && (d == w.tm_d || d == 0))``` apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0```. Jika kondisi tersebut terpenuhi, maka program akan melakukan _Fork_ ```if (fork()==0)```. <br>
-	_Fork_ tersebut akan menjalankan _bash_ pada script yang dinputkan oleh _user_ yang berada pada direktori ```/bin/bash```
-	Proses looping yang dibuat oleh fungsi ```while(1)``` ini akan memberhentikan program sejenak ```sleep(1);``` selama 1 detik sebelum melakukan proses looping kembali.
+	```time_t t = time(NULL)``` akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. Sedangkan ```struct tm tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_.
+* Lalu, pada code berikut ini akan melakukan pengecekan apakah nilai yang tersimpan dalam variabel __Jam__ ```j``` bernilai sama dengan nilai yang tersimpan dalam variabel __Jam__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Jam__ adalah ```0``` dan  apakah nilai yang tersimpan dalam variabel __Menit__ ```m``` bernilai sama dengan nilai yang tersimpan dalam variabel __Menit__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Menit__ adalah ```0``` dan juga  apakah nilai yang tersimpan dalam variabel __Detik__ ```d``` bernilai sama dengan nilai yang tersimpan dalam variabel __Detik__ pada _localtime_ atau nilai yang tersimpan dalam variabel __Detik__ adalah ```0``
+	```bash
+	if((j == tm.tm_hour || j == 0) && (m == tm.tm_min || m == 0) && (d == tm.tm_sec || d == 0)){
+	```
+	Jika kondisi tersebut terpenuhi, maka program akan melakukan _Fork_ ```if(fork()==0)```. _Fork_ tersebut akan menjalankan _bash_ pada script yang dinputkan oleh _user_ yang berada pada direktori ```/bin/bash```. Proses looping yang dibuat oleh fungsi ```while(1)``` ini akan memberhentikan program sejenak ```sleep(1);``` selama 1 detik sebelum melakukan proses looping kembali.
 ### Soal 3
 Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 * #### Soal 3A
