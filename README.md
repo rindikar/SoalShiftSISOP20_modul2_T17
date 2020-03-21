@@ -247,7 +247,7 @@ Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memp
   Diberilah tugas baru yaitu setelah di ekstrak, hasil dari ekstrakan tersebut (di dalam direktori __“home/[USER]/modul2/jpg/”__) harus dipindahkan sesuai dengan pengelompokan, semua file harus dipindahkan ke __“/home/[USER]/modul2/sedaap/”__ dan semua direktori harus dipindahkan ke __“/home/[USER]/modul2/indomie/”__.
 * #### Soal 3D
   Untuk setiap direktori yang dipindahkan ke __“/home/[USER]/modul2/indomie/”__ harus membuat dua file kosong. File yang pertama diberi nama __“coba1.txt”__, lalu 3 detik kemudian membuat file bernama __“coba2.txt”__. (contoh :__“/home/[USER]/modul2/indomie/{nama_folder}/coba1.txt”__).
- #### Code : https://github.com/rindikar/SoalShiftSISOP20_modul2_T17/blob/master/soal3.c
+ #### Code : https://github.com/rindikar/SoalShiftSISOP20_modul2_T17/blob/master/Revisi_Soal3.c
  #### Penyelesaian :
  ```bash
  #include <stdlib.h>
@@ -279,31 +279,65 @@ child_id1 = fork();
 }
 }
 ```
-* Di awal tertulis code ```pid_t child_id1, child_id2;``` ini merupakan pendeklarasian variabel __child_id1__ dan __child_id2__. Kedua variabel ini akan menyimpan ID dari __Child Process__.
-* Dilanjutkan dengan 
+* Di awal, dibuat sebuah fungsi ```struct stat ( ) yang akan mendapatkan informasi dari sebuah file atau direktori.
 	```bash
-	int proses;
-	child_id1 = fork();
-
-	if (child_id == 0)	{
-	sleep(3);
-	char *argv[3] = {"mkdir", "sedaap", NULL};
-	execv("/bin/mkdir", argv);
-	  }
+	int Status(const char *path) { 
+	struct stat pathDir; 
+	stat(path, &pathDir); 
+	return S_ISDIR(pathDir.st_mode); }
 	```
-yang merupakan fungsi untuk membuat __Child Process yang Pertama__. ```child_id1 = fork();``` menunjukkan bahwa PID yang dihasilkan dari proses _fork_ akan disimpan dalam variabel ```child_id1```.<br>
-Pada __Child Process yang Pertama__ akan membuat direktori baru dengan nama "sedaap" dengan menggunakan code berikut ```char *argv[3] = {"mkdir", "sedaap", NULL};```. Dalam __Child Process yang Pertama__ ini menggunakan fungsi ```exec``` yang ditunjukkan dari code ```execv("/bin/mkdir", argv);```. <br>
-__Parent Process__ akan menunggu proses pembuatan direktori baru tersebut selesai, kemudian program akan diberhentikan sejenak ```sleep(3);``` selama 3 detik sebelum __Parent Process__ membuat __Child Process__ kembali.
-* Setelah __Child Process yang Pertama__ telah selesai dilakukan, maka dilanjutkan dengan membuat __Child Process yang Kedua__.
+	```stat(path, &pathDir)``` akan melakukan _stat_ dengan argumen path dari sebuah file atau direktori. ```S_ISDIR``` akan melakukan pengecekan apakah file tersebut berupa direktori atau bukan direktori.
+* Kemudian, proses melakukan perubahan direktori menuju ke direktori ```("/home/xd/Desktop/Modul2/shift/")``` menggunakan code berikut 
 	```bash
-	else {
-	child_id2 = fork();
-	if (child_id2 == 0)	{
-	char *argv[3] = {"unzip", "jpg.zip", NULL};
-	execv("/usr/bin/unzip", argv);
-	``` 
-	```child_id2 = fork();``` akan melakukan penyimpanan PID yang dihasilkan dari proses _fork_ ke dalam variabel ```child_id2```.<br>
-	Berbeda dengan proses yang dilakukan oleh __Child Process yang Pertama__, pada __Child Process yang Kedua__ dilakukan proses meng-ekstrak file __jpg.zip__. <br> 
-	Dalam pembuatan __Child Process yang Kedua__ juga menggunakan fungsi ```exec``` dengan code berikut ```execv("/usr/bin/unzip", argv);```
-* Kemudian, hasil dari ekstrakan tersebut nantinya akan dipindahkan ke direktori baru bernama ```"indomie```", maka kita perlu membuat direktori baru tersebut ```char *argv[3] = {"mkdir", "indomie", NULL};```
-
+	if (pidB > 0 && pidC > 0){  
+  while ((wait(&status)) > 0); 
+  DIR *open;  
+  struct dirent *directory; 
+  chdir("/home/xd/Desktop/Modul2/shift/");  
+  open = opendir(".");
+  	```
+* Setelah itu, apabila kedua direktori sudah tersedia maka program akan dilanjutkan tetapi jika kedua direktori belum tersedia maka program akan memindahkan folder ke dalam folder indomie.
+	```bash
+	if (open){  
+     	  while ((directory = readdir(open)) != NULL){
+	    if(strcmp(directory->d_name, ".") == 0 || strcmp(directory->d_name, "..") == 0)
+	      continue;  
+	      if(Status(directory->d_name)){
+		if(fork() == 0){  
+		  char file[700];
+		  sprintf(file,"/home/xd/Desktop/Modul2/shift/%s",directory->d_name);
+		  char* move[] = {"mv", file,"/home/xd/Desktop/Modul2/shift/indomie/", NULL};
+		        execv("/bin/mv", move);
+          		} 
+	```
+* Setelah program memindahkan folder ke dalam folder indomie, maka program akan membuat file __coba1.txt__ ke setiap folder. Lalu, program akan diberhentikan sejenak selama 3 detik dan dilanjutkan dengan membuat file __coba2.txt__
+	```bash 
+	else{
+            	  while ((wait(&status)) > 0); 
+            	  if(fork() == 0)
+			{
+            	  	if(fork() == 0)
+			{
+            	    	  char cobadulu[700];
+            	    	  FILE *file;
+		          sprintf(cobadulu,"/home/xd/Desktop/Modul2/shift/indomie/%s/coba1.txt",directory->d_name);
+		       	  file = fopen(cobadulu, "w");
+		          fclose(file);
+		        }
+	```
+* Proses terakhir adalah file yang masih tersisa akan mengalami pemindahan secara langsung ke folder sedaap yang berisi file berupa text dan gambar. 
+	```bash
+	else
+			{
+		           while ((wait(&status)) > 0);
+		           sleep(3);
+		           char cobalagi[700];
+		           FILE *file;
+		           sprintf(cobalagi,"/home/umum/Desktop/Modul2/shift/indomie/%s/coba2.txt",directory->d_name);
+		           file = fopen(cobalagi, "w");
+		           fclose(file);
+		           exit(0);
+		        } 
+	```
+	
+	
