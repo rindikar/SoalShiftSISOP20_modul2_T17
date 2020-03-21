@@ -356,9 +356,7 @@ child_id1 = fork();
 	```
 ### Output :
 ![03-fixrevisi 01](https://user-images.githubusercontent.com/49342639/77226079-235a0000-6ba8-11ea-886f-a1e6bd3e294a.jpg)
-
 ![03-fixrevisi 02](https://user-images.githubusercontent.com/49342639/77226112-5c927000-6ba8-11ea-8318-28858fb084d9.jpg)
-
 
 ### Kendala :
 1. SISOP MANTAPPU membuat otak sangat bekerja karena soal setinggi gunung (kemungkinan lebih tinggi dari gunung).
