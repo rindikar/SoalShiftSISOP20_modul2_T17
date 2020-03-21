@@ -193,21 +193,30 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 
 	```
 	Terdapat fungsi```argv[1]``` yang akan menyimpan argumen __Detik__ ```d``` kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan yang dilakukan adalah pengecekan terhadap apakah argumenyang tersimpan dalam variabel __Detik__ ```d``` merupakan bilangan diantara 0 hingga 59 ```if(atoi(argv[1]) < 0 || atoi(argv[1]) > 59)```, hal ini dikarenakan 1 menit terdiri dari 60 detik. Selain itu, juga dilakukan pengecekan terhadap apakah argumen yang tersimpan dalam variabel __Detik__ ```d``` merupakan karakter _bintang_ ```if(argv[1][0] == '*')```, jika kondisi ini terpenuhi maka argumen ```0``` akan masuk dalam variabel __Detik__ ```d```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. Jika kondisi-kondisi tersebut tidak terpenuhi, maka argumen yang tersimpan dalam variabel ```argv[1]``` akan dikonversi menjadi nilai bertipe integer yang akan disimpan dalam variabel __Detik__ ```d```.
-* Kemudian , pada code di bawah ini :
+* Kemudian, dilanjutkan dengan proses pengecekan argumen yang tersimpan dalam variabel __Menit__ ```m```. :
 	```bash
-	if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
+	 if(atoi(argv[2]) < 0 || atoi(argv[2]) > 59)
 	```
-	Terdapat fungsi```argv[2]``` yang akan menyimpan argument __Menit__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Menit__ ```m```. Pengecekan yang dilakukan yakni  ```argv[2]) != '*'``` apakah argumen yang tersimpan dalam variabel __Menit__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Menit__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[2] > 60 && atoi(argv[2]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
-* Dan pengecekan terakhir, dengan code di bawah ini :
+	Terdapat fungsi```argv[2]``` yang akan menyimpan argumen __Menit__ ```m``` kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Menit__ ```m```. Pengecekan yang dilakukan adalah pengecekan terhadap apakah argumenyang tersimpan dalam variabel __Menit__ ```m``` merupakan bilangan diantara 0 hingga 59 ```if(atoi(argv[2]) < 0 || atoi(argv[2]) > 59)```, hal ini dikarenakan 1 jam terdiri dari 60 menit. Selain itu, juga dilakukan pengecekan terhadap apakah argumen yang tersimpan dalam variabel __Menit__ ```m``` merupakan karakter _bintang_ ```if(argv[2][0] == '*')```, jika kondisi ini terpenuhi maka argumen ```0``` akan masuk dalam variabel __Menit__ ```m```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. Jika kondisi-kondisi tersebut tidak terpenuhi, maka argumen yang tersimpan dalam variabel ```argv[2]``` akan dikonversi menjadi nilai bertipe integer yang akan disimpan dalam variabel __Menit__ ```m```.
+* Pengecekan terakhir yakni proses pengecekan argumen yang tersimpan dalam variabel __Jam__ ```j```
 	```bash
-	if(j = atoi(argv[3]) != '*' && (atoi(argv[1] > 60 && atoi(argv[3]) < 0);
+	if(atoi(argv[3]) < 0 || atoi(argv[3]) > 23)
 	```
-	Terdapat fungsi```argv[3]``` yang akan menyimpan argument __Jam__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Jam__ ```j```. Pengecekan yang dilakukan yakni  ```argv[3]) != '*'``` apakah argumen yang tersimpan dalam variabel __Menit__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Menit__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[3] > 60 && atoi(argv[3]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
-* Pada ```while(1)``` akan membuat sebuah looping (loop utama) dikarenakan __Daemon__ akan bekerja dalam jangka waktu tertentu. <br>
-* Pada code berikut :
+	Terdapat fungsi```argv[3]``` yang akan menyimpan argumen __Jam__ ```j``` kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Jam__ ```j```. Pengecekan yang dilakukan adalah pengecekan terhadap apakah argumenyang tersimpan dalam variabel __Jam__ ```j``` merupakan bilangan diantara 0 hingga 59 ```if(atoi(argv[3]) < 0 || atoi(argv[3]) > 23)```, hal ini dikarenakan jam dimulai dari 0 (12 malam) hingga 23 (11 malam). Selain itu, juga dilakukan pengecekan terhadap apakah argumen yang tersimpan dalam variabel __Jam__ ```j``` merupakan karakter _bintang_ ```if(argv[3][0] == '*')```, jika kondisi ini terpenuhi maka argumen ```0``` akan masuk dalam variabel __Jam__ ```j```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. Jika kondisi-kondisi tersebut tidak terpenuhi, maka argumen yang tersimpan dalam variabel ```argv[3]``` akan dikonversi menjadi nilai bertipe integer yang akan disimpan dalam variabel __Jam__ ```j```.
+* Proses dilanjutkan dengan code di bawah ini :
 	```bash
-	time_t t = time(NULL); 
-	struct w tm = *localtime(&t)
+	while(1) {
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+	if((j == tm.tm_hour || j == 0) && (m == tm.tm_min || m == 0) && (d == tm.tm_sec || d == 0)){
+		if(fork()==0){
+        		char *argx[] = {"bash",argv[4], NULL};
+        execv("/bin/bash", argx);
+      }
+    }
+    sleep(1);
+  }
+}
 	```
 	maka ```time_t t = time(NULL);```akan menyimpan waktu saat ini ```time(NULL)``` ke dalam variabel ```t```. <br>
 	Sedangkan ```struct w tm = *localtime(&t)``` akan mengonversi nilai dalam variabel ```t``` ke waktu yang dinyatakan sebagai _localtime_. <br>
