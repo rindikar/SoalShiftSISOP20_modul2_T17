@@ -235,6 +235,8 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	date >> s1.txt
 	```
 #### Output :
+![01-fixrevisi](https://user-images.githubusercontent.com/49342639/77215591-6932ac00-6b47-11ea-84f5-b8ba78d5d23a.png)
+
 ### Soal 3
 Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 * #### Soal 3A
