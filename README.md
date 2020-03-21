@@ -159,35 +159,40 @@ Untuk membuat __Daemon__, langkah pertama yang harus dilakukan terdapat pada cod
 	Code pada langkah kedua di atas merupakan pemanggilan fungsi ```setsid()``` sehingga proses akan mendapatkan sebuah __session ID__ baru. 
 	Langkah ketiga dari pembuatan __Daemon__ adalah mengubah direktori kerja dengan code di bawah ini :
 	```bash
-		if ((chdir("/home/xd/Desktop/Modul2/shift")) < 0) {
-   exit(EXIT_FAILURE);
+		if ((chdir("/")) < 0) {
+    exit(EXIT_FAILURE);
   }
   	```
-	Direktori kerja yang aktif harus ditempatkan ke tempat yang pasti akan selalu ada dengan menggunakan implementasi fungsi ```chdir```. <br>
-	Untuk mencegah terjadinya intervensi dari _user_ dan untuk tujuan pengamanan, maka kita perlu melakukan langkah keempat dari pembuatan __Daemon__ yaitu melakukan penutupan terhadap tiga jenis descriptor standard I/O yaitu ```STDIN``` (standar input), ```STDOUT``` (standar output) dan ```STDERR``` (standar error). Penutupan file descriptor standard I/O ini menggunakan implementasi dari fungsi ```close``` dengan penulisan code di bawah ini :
+	Direktori kerja yang aktif harus ditempatkan ke tempat yang pasti akan selalu ada dengan menggunakan implementasi fungsi ```chdir```. Direktori kerja yang kami pakai disini yakni direktori _root_ `"/"` karena _root_ akan selalu hidup ssat sistem operasi kita berjalan. 
+* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima) argumen.
 	```bash
-	close(STDIN_FILENO);
-  	close(STDOUT_FILENO);
-  	close(STDERR_FILENO);
-  	```
-* Dalam program ini, kami memasukkan jumlah argumen sebanyak 5 (lima), hal ini dikarenakan ```./program/``` terhitung menjadi argumen. Apabila jumlah argumen tersebut kurang dari 5 (lima) ```if(argc != 5)```, maka program tidak akan berjalan ```printf("error");``` sehingga terciptalah code di bawah ini :
-	```bash 
 	if(argc != 5){
-		printf("error");
-		return 0;
-	}
-	```
+    printf("Error");
+    return 0;
+  }
+  	```
+	Hal tersebut dikarenakan ```./program/``` terhitung menjadi argumen. Apabila jumlah argumen kurang dari 5 (lima) ```if(argc != 5)```, maka program tidak akan berjalan ```printf("Error")```.
 * Pada program akan diminta argumen dari __Detik__ ```d```, __Menit__ ```m``` dan __Jam__ ```j```. Oleh karena itu, perlu adanya inisialisasi argumen awal untuk ketiga variabel tersebut dengan ```0``` seperti code di bawah ini :
 	```bash
 	d = 0;
 	m = 0;
 	j = 0;
 	```
-* Lalu, pada code di bawah ini :
+* Kemudian, dilanjutkan dengan proses pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```.
 	```bash
-	if(d = atoi(argv[1]) != '*' && (atoi(argv[1] > 60 && atoi(argv[1]) < 0);
+	//Detik
+	if(isalpha(argv[1][0])){
+    		printf("Int boi kalo ga *");
+  	}else if(atoi(argv[1]) < 0 || atoi(argv[1]) > 59){
+    		printf("Detik cuma 0 - 59");
+	}else if(argv[1][0] == '*'){
+		d = 0;  	
+	}else{
+    		d = atoi(argv[1]);
+  	}
+
 	```
-	Terdapat fungsi```argv[1]``` yang akan menyimpan argument __Detik__ kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan pertama yakni  ```argv[1]) != '*'``` apakah argumen yang tersimpan dalam variabel __Detik__ merupakan karakter ```*``` dan apakah argumen yang tersimpan dalam variabel __Detik__ merupakan bilangan diantara 0 hingga 60 ```(atoi(argv[1] > 60 && atoi(argv[1]) < 0```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. <br>
+	Terdapat fungsi```argv[1]``` yang akan menyimpan argumen __Detik__ ```d``` kemudian dianjutkan dengan pengecekan argumen yang tersimpan dalam variabel __Detik__ ```d```. Pengecekan yang dilakukan adalah pengecekan terhadap apakah argumenyang tersimpan dalam variabel __Detik__ ```d``` merupakan bilangan diantara 0 hingga 59 ```if(atoi(argv[1]) < 0 || atoi(argv[1]) > 59)```, hal ini dikarenakan 1 menit terdiri dari 60 detik. Selain itu, juga dilakukan pengecekan terhadap apakah argumen yang tersimpan dalam variabel __Detik__ ```d``` merupakan karakter _bintang_ ```if(argv[1][0] == '*')```, jika kondisi ini terpenuhi maka argumen ```0``` akan masuk dalam variabel __Detik__ ```d```. Penggunaan ```atoi``` berfungsi untuk mengonversi nilai _string_ menjadi bilangan bertipe _integer_. Jika kondisi-kondisi tersebut tidak terpenuhi, maka argumen yang tersimpan dalam variabel ```argv[1]``` akan dikonversi menjadi nilai bertipe integer yang akan disimpan dalam variabel __Detik__ ```d```.
 * Kemudian , pada code di bawah ini :
 	```bash
 	if(m = atoi(argv[2]) != '*' && (atoi(argv[1] > 60 && atoi(argv[2]) < 0);
